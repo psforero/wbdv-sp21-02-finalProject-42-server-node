@@ -24,6 +24,16 @@ module.exports = (app) => {
     }
   }
 
+  const findAdvisoryForTeacher = async (req, res) => {
+    try {
+      const advisorId = req.params['userId']
+      const advisory = await usersService.findAdvisoryForTeacher(advisorId)
+      res.json(advisory)
+    } catch (err) {
+      res.status(500).json({ message: err.message })
+    }
+  }
+
   const createUser = async (req, res) => {
     try {
       const user = {
@@ -33,7 +43,7 @@ module.exports = (app) => {
         type: req.body.type,
       }
       if (req.body.type === 'STUDENT') {
-        user.advisor = req.body.advisor
+        user.advisorId = req.body.advisorId
       }
 
       const newUser = await usersService.createUser(user)
@@ -53,7 +63,7 @@ module.exports = (app) => {
         type: req.body.type,
       }
       if (req.body.type === 'STUDENT') {
-        user.advisor = req.body.advisor
+        user.advisorId = req.body.advisorId
       }
 
       const updatedUser = await usersService.updateUser(userId, user)
@@ -76,6 +86,7 @@ module.exports = (app) => {
 
   app.get('/api/users', findAllUsers)
   app.get('/api/users/:userId', findUserById)
+  app.get('/api/users/:userId/advisory', findAdvisoryForTeacher)
   app.post('/api/users', createUser)
   app.put('/api/users/:userId', updateUser)
   app.delete('/api/users/:userId', deleteUser)

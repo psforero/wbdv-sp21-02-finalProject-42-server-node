@@ -16,9 +16,9 @@ const usersSchema = new mongoose.Schema({
   type: {
     type: String, enum: ['STUDENT', 'TEACHER', 'ADMIN']
   },
-  advisor: {
-    type: String,
-  },
+  advisorId: {
+    type: String
+  }
 }, { collection: 'users' })
 
 module.exports = usersSchema

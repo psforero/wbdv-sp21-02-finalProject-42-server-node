@@ -4,8 +4,8 @@ const findAllCheckins = () => {
   return checkinsModel.find()
 }
 
-const findCheckinsById = (gradeId) => {
-  return checkinsModel.findById(gradeId)
+const findCheckinById = (checkinId) => {
+  return checkinsModel.findById(checkinId)
 }
 
 const findCheckinsForUser = (userId, type) => {
@@ -21,7 +21,7 @@ const createCheckin = (checkin) => {
 }
 
 const updateCheckin = (checkinId, checkin) => {
-  return checkinsModel.findByIdAndUpdate(checkinId, checkin)
+  return checkinsModel.findByIdAndUpdate(checkinId, checkin, { new: true })
 }
 
 const deleteCheckin = (checkinId) => {
@@ -30,7 +30,7 @@ const deleteCheckin = (checkinId) => {
 
 module.exports = {
   findAllCheckins,
-  findCheckinsById,
+  findCheckinById,
 
   findCheckinsForUser,
   createCheckin,

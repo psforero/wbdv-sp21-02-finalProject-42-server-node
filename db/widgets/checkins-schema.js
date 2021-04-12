@@ -1,17 +1,23 @@
 const mongoose = require('mongoose')
+const itemsSchema = require('./item-schema')
 
 const checkinsSchema = new mongoose.Schema({
-  byTeacherId: String,
-  forStudentId: String,
-  content: String,
-  date: String,
-  items: [{
-    title: String,
-    description: String,
-    type: String, enum: ['TODO', 'EVENT'],
-    date: String,
-    completed: String
-  }]
-}, {collection: 'checkins'})
+  byTeacherId: {
+    type: String,
+    required: true
+  },
+  forStudentId: {
+    type: String,
+    required: true
+  },
+  content: {
+    type: String,
+    required: true
+  },
+  date: {
+    type: String
+  },
+  items: [itemsSchema]
+}, { collection: 'checkins' })
 
 module.exports = checkinsSchema

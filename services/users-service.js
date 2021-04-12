@@ -8,6 +8,10 @@ const findUserById = (userId) => {
   return usersModel.findById(userId)
 }
 
+const findAdvisoryForTeacher = (advisorId) => {
+  return usersModel.find( {advisorId: advisorId} )
+}
+
 const createUser = (user) => {
   const newUser = new usersModel(user)
   return newUser.save()
@@ -24,6 +28,7 @@ const deleteUser = (userId) => {
 module.exports = {
   findAllUsers,
   findUserById,
+  findAdvisoryForTeacher,
   createUser,
   updateUser,
   deleteUser
