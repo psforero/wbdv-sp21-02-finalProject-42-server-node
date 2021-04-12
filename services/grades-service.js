@@ -14,16 +14,16 @@ const findGradesForStudent = (studentId) => {
 
 const createGradeForStudent = (grade) => {
   const newGrade = new gradesModel(grade);
-  return newGrade.save();
+  return newGrade.save()
 };
 
 const updateGradeForStudent = (gradeId, grade) => {
-  return gradesModel.findByIdAndUpdate(gradeId, grade);
+  return gradesModel.findByIdAndUpdate(gradeId, grade)
 };
 
 const deleteGradeForStudent = (gradeId) => {
-  return gradesModel.findByIdAndDelete(gradeId);
-};
+  return gradesModel.findByIdAndDelete(gradeId)
+}
 
 module.exports = {
   findAllGrades,
