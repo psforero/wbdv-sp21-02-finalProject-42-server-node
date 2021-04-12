@@ -31,5 +31,6 @@ app.use(express.json())
 require('./controllers/users-controller')(app)
 require('./controllers/grades-controller')(app)
 require('./controllers/checkins-controller')(app)
+require('./controllers/spreadsheet-controller')(app)
 
 app.listen(4000, () => console.log('Server started'))

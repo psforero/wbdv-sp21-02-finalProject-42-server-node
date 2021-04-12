@@ -37,7 +37,8 @@ module.exports = (app) => {
   const createUser = async (req, res) => {
     try {
       const user = {
-        name: req.body.name,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
         username: req.body.username,
         password: req.body.password,
         type: req.body.type,
@@ -57,7 +58,8 @@ module.exports = (app) => {
     try {
       const userId = req.params['userId']
       const user = {
-        name: req.body.name,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
         username: req.body.username,
         password: req.body.password,
         type: req.body.type,
