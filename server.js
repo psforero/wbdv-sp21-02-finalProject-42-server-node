@@ -24,20 +24,10 @@ require('./controllers/quizzes-controller')(app)
 require('./controllers/question-controller')(app)
 require('./controllers/quiz-attempts-controller')(app)
 
-
-// const quizzesController = require("./controllers/quizzes-controller")
-// quizzesController(app)
-
-// app.listen(3000)
-
-//mongo "mongodb+srv://cluster0.3scwd.mongodb.net/myFirstDatabase" --username Kelly
-// const uri = "mongodb+srv://<username>:<password>@<your-cluster-url>/test?retryWrites=true&w=majority";
-// mongoose.connect("mongodb+srv://Kelly:881994Ide@cluster0.3scwd.mongodb.net/whiteboard-01" ,
-//     {useNewUrlParser: true, useUnifiedTopology: true});
-
 const CONNECTION_URL = "mongodb+srv://Kelly%3ASkylzuWyNF9VA83G@cluster0.3scwd.mongodb.net/whiteboard-02"
+var port = process.env.PORT || 3000
 
-app.listen(3000, () => {
+app.listen(port, () => {
     mongoose.connect(CONNECTION_URL, { useNewUrlParser: true }, (error) => {
         if(error) {
             throw error;
