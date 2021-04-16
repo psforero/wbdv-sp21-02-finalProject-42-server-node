@@ -5,7 +5,6 @@ const mongoose = require('mongoose');
 // mongoose.connect('mongodb://localhost:27017/whiteboard-01',
 //     {useNewUrlParser: true, useUnifiedTopology: true});
 
-
 // configure CORS
 app.use(function (req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
