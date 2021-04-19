@@ -95,7 +95,7 @@ module.exports = (app) => {
 
   app.get('/api/checkins', findAllCheckins)
   app.get('/api/checkins/:checkinId', findCheckinById)
-  app.get('/api/users/:userId/checkins', findCheckinsForUser) // ?type='STUDENT' or 'TEACHER'
+  app.get('/api/users/:userId/checkins', findCheckinsForUser) // ?type=STUDENT or TEACHER
   app.post('/api/users/:userId/checkins', createCheckin)
   app.put('/api/users/:userId/checkins/:checkinId', updateCheckin)
   app.delete('/api/users/:userId/checkins/:checkinId', deleteCheckin)
