@@ -2,10 +2,12 @@ const mongoose = require('mongoose')
 
 const usersSchema = new mongoose.Schema({
   firstName: {
-    type: String
+    type: String,
+    require: true
   },
   lastName: {
-    type: String
+    type: String,
+    require: true
   },
   username: {
     type: String,
@@ -16,9 +18,13 @@ const usersSchema = new mongoose.Schema({
     require: true
   },
   type: {
-    type: String, enum: ['STUDENT', 'TEACHER', 'ADMIN']
+    type: String, enum: ['STUDENT', 'STAFF', 'ADMIN'],
+    require: true
   },
-  advisorId: {
+  advisor: {
+    type: String
+  },
+  email: {
     type: String
   }
 }, { collection: 'users' })
