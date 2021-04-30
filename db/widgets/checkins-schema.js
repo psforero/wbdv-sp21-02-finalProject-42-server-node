@@ -12,7 +12,7 @@ const checkinsSchema = new mongoose.Schema({
   },
   content: {
     type: String,
-    default: ''
+    default: 'New checkin'
   },
   date: {
     type: Date,

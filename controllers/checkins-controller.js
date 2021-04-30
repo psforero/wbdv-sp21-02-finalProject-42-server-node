@@ -59,10 +59,7 @@ module.exports = (app) => {
     try {
       const checkinId = req.params['checkinId']
       const checkin = {
-        byTeacherId: req.body.byTeacherId,
-        forStudentId: req.body.forStudentId,
         content: req.body.content,
-        date: req.body.date,
         items: req.body.items
       }
       const updatedCheckin = await checkinsService.updateCheckin(checkinId, checkin)
