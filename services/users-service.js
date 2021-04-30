@@ -7,8 +7,8 @@ const findAllUsers = () => {
   return usersModel.find()
 }
 
-const findUserById = (userId) => {
-  return usersModel.findById(userId)
+const findUserByName = (name) => {
+  return usersModel.find({ firstName: name.firstName, lastName: name.lastName })
 }
 
 const findUserByUsername = (username) => {
@@ -56,7 +56,7 @@ const login = (userId) => {
 
 module.exports = {
   findAllUsers,
-  findUserById,
+  findUserByName,
   findUserByUsername,
   findAdvisoryForTeacher,
   initializeDatabase,

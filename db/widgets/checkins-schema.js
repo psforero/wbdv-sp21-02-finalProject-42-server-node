@@ -12,10 +12,11 @@ const checkinsSchema = new mongoose.Schema({
   },
   content: {
     type: String,
-    required: true
+    default: ''
   },
   date: {
-    type: String
+    type: Date,
+    default: Date.now
   },
   items: [itemsSchema]
 }, { collection: 'checkins' })

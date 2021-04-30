@@ -43,11 +43,10 @@ module.exports = (app) => {
   const createCheckin = async (req, res) => {
     try {
       const checkin = {
-        byTeacherId: req.body.byTeacherId,
-        forStudentId: req.body.forStudentId,
-        content: req.body.content,
-        date: req.body.date,
-        items: req.body.items
+        byTeacherId: req.params['teacherId'],
+        forStudentId: req.params['studentId'],
+        content: '',
+        items: []
       }
       const newCheckin = await checkinsService.createCheckin(checkin)
       res.status(201).json(newCheckin)
@@ -58,11 +57,10 @@ module.exports = (app) => {
 
   const updateCheckin = async (req, res) => {
     try {
-      const studentId = req.params['userId']
       const checkinId = req.params['checkinId']
       const checkin = {
         byTeacherId: req.body.byTeacherId,
-        forStudentId: studentId,
+        forStudentId: req.body.forStudentId,
         content: req.body.content,
         date: req.body.date,
         items: req.body.items
@@ -96,7 +94,7 @@ module.exports = (app) => {
   app.get('/api/checkins', findAllCheckins)
   app.get('/api/checkins/:checkinId', findCheckinById)
   app.get('/api/users/:userId/checkins', findCheckinsForUser) // ?type='STUDENT' or 'TEACHER'
-  app.post('/api/users/:userId/checkins', createCheckin)
-  app.put('/api/users/:userId/checkins/:checkinId', updateCheckin)
-  app.delete('/api/users/:userId/checkins/:checkinId', deleteCheckin)
+  app.post('/api/users/:studentId/checkins/:teacherId', createCheckin)
+  app.put('/api/checkins/:checkinId', updateCheckin)
+  app.delete('/api/checkins/:checkinId', deleteCheckin)
 }

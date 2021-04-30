@@ -10,17 +10,17 @@ module.exports = (app) => {
     }
   }
 
-  const findUserById = async (req, res) => {
+  const findUserByName = async (req, res) => {
     try {
-      const userId = req.params['userId']
-      const user = await usersService.findUserById(userId)
-      if (user == null) {
-        res.status(404).json({ message: 'User not found' })
-      } else {
-        res.json(user)
+      const names = {
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
       }
+
+      const user = await usersService.findUserByName(names)
+      res.status(201).json(user)
     } catch (err) {
-      res.status(500).json({ message: err.message })
+      res.status(404).json({ message: err.message })
     }
   }
 
@@ -135,12 +135,11 @@ module.exports = (app) => {
   }
 
   app.get('/api/users', findAllUsers)
-  app.get('/api/users/:userId', findUserById)
   app.get('/api/users/:userId/advisory', findAdvisoryForTeacher)
-  app.post('/api/users', createUser)
   app.put('/api/users/:userId', updateUser)
   app.delete('/api/users/:userId', deleteUser)
-  app.delete('/api/users/:userId', deleteUser)
+  app.post('/api/users/byName', findUserByName)
+  app.post('/api/users', createUser)
   app.post('/api/users/initialize', initializeDatabase)
   app.post('/api/users/register', register)
   app.post('/api/users/login', login)
